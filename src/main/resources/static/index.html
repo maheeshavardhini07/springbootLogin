@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <p id="cnt">
+    <div id="demo">
+        <h2>The XMLHttpRequest Object</h2>
+        <button type="button" onclick="getItems()">Change Content</button>
+    </div>
+    <script>
+        const uri = "https://jsonplaceholder.typicode.com/posts";
+        let posts = [];
+        let updateIndex = 0;
+        function getItems() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    posts=JSON.parse(xhttp.responseText);
+                    document.getElementById("cnt").innerHTML =posts.length
+                    document.getElementById("demo").innerHTML =posts
+                }
+            };
+            xhttp.open("GET", uri, true);
+            xhttp.send();
+        }
+        //1. SpringBoot Application
+        //2. Entity class
+        //3. Repository
+        //4. Service & service Impl
+        //5. Controller
+    </script>
+</body>
+</html>
